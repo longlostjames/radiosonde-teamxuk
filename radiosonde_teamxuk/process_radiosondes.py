@@ -23,6 +23,12 @@ try:
 except ImportError:
     from importlib_resources import files
 
+# Import package version
+try:
+    from radiosonde_teamxuk import __version__ as PACKAGE_VERSION
+except ImportError:
+    PACKAGE_VERSION = "unknown"
+
 
 def wind_components(speed, direction):
     """
@@ -781,6 +787,11 @@ def save_to_ncas_netcdf(profile, output_dir, instrument=None, metadata_dir=None)
             print(f"  Debug: profile keys: {list(profile.keys())}")
             if 'mw41_software_version' in profile:
                 print(f"  Debug: mw41_software_version value: {repr(profile['mw41_software_version'])}")
+        
+        # Set processing software version from package
+        nc.setncattr('processing_software', 'radiosonde-teamxuk')
+        nc.setncattr('processing_software_version', PACKAGE_VERSION)
+        nc.setncattr('processing_software_url', 'https://github.com/longlostjames/radiosonde-teamxuk')
         
         # Append source file information to existing comment
         source_file = profile.get('source_file', 'unknown')
