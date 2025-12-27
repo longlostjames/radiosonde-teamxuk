@@ -10,7 +10,7 @@
     "instrument_scientist_email": "hugo.ricketts@ncas.ac.uk",
     "instrument_scientist_url": "https://orcid.org/0000-0002-1708-2431",
     "processing_software_url": "https://github.com/longlostjames/radiosonde-teamx",
-    "processing_software_version": "v1.0",
+    "processing_software_version": "v1.0.0",
     "calibration_sensitivity": "not applicable",
     "calibration_certification_date": "N/A",
     "calibration_certification_url": "N/A",
