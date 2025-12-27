@@ -2,27 +2,52 @@
 
 Python tools for processing Vaisala RS41-SGP radiosonde data from the TEAMxUK campaign, converting EDT files to NCAS-AMOF compliant NetCDF format and generating quicklook plots.
 
+## Installation
+
+### Install from source
+
+```bash
+# Clone the repository
+git clone https://github.com/longlostjames/radiosonde-teamxuk.git
+cd radiosonde-teamxuk
+
+# Install the package
+pip install .
+```
+
+### Development installation
+
+For development work, install in editable mode:
+
+```bash
+pip install -e .
+```
+
+### Install directly from GitHub
+
+```bash
+pip install git+https://github.com/longlostjames/radiosonde-teamxuk.git
+```
+
+All required dependencies will be automatically installed.
+
 ## Overview
 
-This repository contains two main scripts:
-- **`process_radiosondes.py`**: Converts EDT files to NCAS-AMOF NetCDF format
-- **`generate_quicklooks.py`**: Creates quicklook plots from NetCDF files
+This package provides two main command-line tools:
+- **`process-radiosondes`**: Converts EDT files to NCAS-AMOF NetCDF format
+- **`generate-quicklooks`**: Creates quicklook plots from NetCDF files
 
 ## Requirements
 
 - Python 3.9+
-- Required packages:
+- Required packages (automatically installed):
   - `numpy`
   - `matplotlib`
   - `metpy`
   - `cartopy`
   - `netCDF4`
   - `ncas-amof-netcdf-template`
-
-Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+  - `eccodes`
 
 ## Usage
 
@@ -31,12 +56,12 @@ pip install -r requirements.txt
 Convert Vaisala EDT (Extended Data) files to NCAS-AMOF compliant NetCDF format:
 
 ```bash
-python process_radiosondes.py <input_directory> <output_directory> [metadata_directory]
+process-radiosondes <input_directory> <output_directory> [metadata_directory]
 ```
 
 **Example:**
 ```bash
-python process_radiosondes.py ./edt_files ./output
+process-radiosondes ./edt_files ./output
 ```
 
 **Features:**
@@ -68,13 +93,13 @@ Only processes EDT files starting with `edt1sdataforv217*`. The script reads:
 Create quicklook plots from NetCDF files:
 
 ```bash
-python generate_quicklooks.py <input_directory> [--stability]
+generate-quicklooks <input_directory> [--stability]
 ```
 
 **Example:**
 ```bash
-python generate_quicklooks.py /path/to/netcdf/files
-python generate_quicklooks.py /path/to/netcdf/files --stability
+generate-quicklooks /path/to/netcdf/files
+generate-quicklooks /path/to/netcdf/files --stability
 ```
 
 **Features:**
@@ -102,6 +127,27 @@ NetCDF files follow NCAS naming convention:
 Example:
 ```
 ncas-radiosonde-2_sterzing_20250225-080054_sonde_teamxuk_v1.0.nc
+```
+
+## Using as a Python Library
+
+You can also import and use the package functions in your own Python code:
+
+```python
+from radiosonde_teamxuk import read_edt_file, save_to_ncas_netcdf, create_quicklook
+
+# Read an EDT file
+profile = read_edt_file('path/to/edt1sdataforv217_20250225_1100.nc')
+
+# Process and save to NetCDF
+output_file = save_to_ncas_netcdf(
+    profile,
+    output_dir='./output',
+    metadata_file='path/to/metadata.json'
+)
+
+# Generate a quicklook plot
+create_quicklook(output_file, stability=True)
 ```
 
 ## Directory Structure

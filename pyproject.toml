@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "radiosonde-teamxuk"
+version = "0.1.0"
+description = "Python tools for processing Vaisala RS41-SGP radiosonde data from the TEAMxUK campaign"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "TEAMxUK"}
+]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.20.0",
+    "matplotlib>=3.4.0",
+    "metpy>=1.3.0",
+    "cartopy>=0.20.0",
+    "netCDF4>=1.5.7",
+    "ncas-amof-netcdf-template>=2.0.0",
+    "eccodes>=1.5.0",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+
+[project.scripts]
+process-radiosondes = "radiosonde_teamxuk.process_radiosondes:main"
+generate-quicklooks = "radiosonde_teamxuk.generate_quicklooks:main"
+
+[project.urls]
+Homepage = "https://github.com/longlostjames/radiosonde-teamxuk"
+Repository = "https://github.com/longlostjames/radiosonde-teamxuk"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["radiosonde_teamxuk*"]
+
+[tool.setuptools.package-data]
+radiosonde_teamxuk = ["*.json"]

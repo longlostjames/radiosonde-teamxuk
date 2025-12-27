@@ -18,6 +18,10 @@ import cartopy.feature as cfeature
 from eccodes import codes_bufr_new_from_file, codes_get, codes_set, codes_release
 from netCDF4 import Dataset
 import ncas_amof_netcdf_template as nant
+try:
+    from importlib.resources import files
+except ImportError:
+    from importlib_resources import files
 
 
 def wind_components(speed, direction):
@@ -486,8 +490,19 @@ def save_to_ncas_netcdf(profile, output_dir, instrument=None, metadata_dir=None)
             if os.path.exists(metadata_file):
                 print(f"  ✓ Using metadata file: {os.path.basename(metadata_file)}")
             else:
-                print(f"  ⚠️  Metadata file not found: {os.path.basename(metadata_file)}")
-                metadata_file = None
+                # Try to load from package resources
+                try:
+                    pkg_files = files('radiosonde_teamxuk')
+                    pkg_metadata = pkg_files / f'metadata_{instrument}.json'
+                    if pkg_metadata.is_file():
+                        metadata_file = str(pkg_metadata)
+                        print(f"  ✓ Using metadata file from package: {os.path.basename(metadata_file)}")
+                    else:
+                        print(f"  ⚠️  Metadata file not found: metadata_{instrument}.json")
+                        metadata_file = None
+                except:
+                    print(f"  ⚠️  Metadata file not found: {os.path.basename(metadata_file)}")
+                    metadata_file = None
         
         # Parse timestamp to get date and time with seconds
         timestamp_str = profile.get('timestamp', 'Unknown')
@@ -1119,13 +1134,25 @@ def process_edt_files(input_dir, output_dir, metadata_dir=None):
     
     # Metadata files will be selected per instrument based on hardware version
     # Look for instrument-specific metadata files in common locations
-    metadata_dir = None
-    for search_dir in ['.', input_dir]:
-        if os.path.exists(os.path.join(search_dir, 'metadata_ncas-radiosonde-1.json')) or \
-           os.path.exists(os.path.join(search_dir, 'metadata_ncas-radiosonde-2.json')):
-            metadata_dir = os.path.abspath(search_dir)
-            print(f"Found metadata files in: {metadata_dir}")
-            break
+    if metadata_dir is None:
+        # Try package directory first
+        try:
+            pkg_files = files('radiosonde_teamxuk')
+            if (pkg_files / 'metadata_ncas-radiosonde-1.json').is_file() or \
+               (pkg_files / 'metadata_ncas-radiosonde-2.json').is_file():
+                metadata_dir = str(pkg_files)
+                print(f"Found metadata files in package: {metadata_dir}")
+        except:
+            pass
+        
+        # Fall back to searching in current directory and input directory
+        if metadata_dir is None:
+            for search_dir in ['.', input_dir]:
+                if os.path.exists(os.path.join(search_dir, 'metadata_ncas-radiosonde-1.json')) or \
+                   os.path.exists(os.path.join(search_dir, 'metadata_ncas-radiosonde-2.json')):
+                    metadata_dir = os.path.abspath(search_dir)
+                    print(f"Found metadata files in: {metadata_dir}")
+                    break
     
     # Find all EDT files
     edt_files = glob.glob(os.path.join(input_dir, '*.txt'))
