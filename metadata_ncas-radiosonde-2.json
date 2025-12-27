@@ -33,7 +33,7 @@
     "deployment_mode": "trajectory",
     "platform_altitude": "936.6 m",
     "location_keywords": "Sterzing, Vipiteno, South Tyrol, Italy",
-    "source": "NCAS Vaisala Sounding Station unit 1",
+    "source": "NCAS Vaisala Sounding Station unit 2",
     "institution": "NCAS (National Centre for Atmospheric Science)",
     "references": "Vaisala Radiosonde RS41-SGP Datasheet, https://docs.vaisala.com/api/khub/documents/Esj71UqX7oDBFLgDCSbsFA/content",
     "acknowledgement": "Acknowledgement of NCAS as the data provider is required whenever and wherever these data are used.",
