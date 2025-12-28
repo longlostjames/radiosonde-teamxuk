@@ -25,9 +25,13 @@ except ImportError:
 
 # Import package version
 try:
-    from radiosonde_teamxuk import __version__ as PACKAGE_VERSION
-except ImportError:
-    PACKAGE_VERSION = "unknown"
+    from importlib.metadata import version
+    PACKAGE_VERSION = version("radiosonde-teamxuk")
+except Exception:
+    try:
+        from radiosonde_teamxuk import __version__ as PACKAGE_VERSION
+    except ImportError:
+        PACKAGE_VERSION = "0.1.0"  # Fallback to hardcoded version
 
 
 def wind_components(speed, direction):
