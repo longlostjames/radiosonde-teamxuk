@@ -31,7 +31,7 @@ except Exception:
     try:
         from radiosonde_teamxuk import __version__ as PACKAGE_VERSION
     except ImportError:
-        PACKAGE_VERSION = "0.1.0"  # Fallback to hardcoded version
+        PACKAGE_VERSION = "0.2.0"  # Fallback to hardcoded version
 
 
 def wind_components(speed, direction):

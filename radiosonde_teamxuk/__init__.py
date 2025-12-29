@@ -5,8 +5,8 @@ Python tools for processing Vaisala RS41-SGP radiosonde data from the TEAMxUK ca
 converting EDT files to NCAS-AMOF compliant NetCDF format and generating quicklook plots.
 """
 
-__version__ = "0.1.0"
-__author__ = "TEAMxUK"
+__version__ = "0.2.0"
+__author__ = "Chris Walden"
 
 from .process_radiosondes import (
     read_edt_file,
