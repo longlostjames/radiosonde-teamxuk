@@ -24,12 +24,12 @@ process-teamxuk-radiosondes <input_directory> <output_directory> [metadata_direc
 
 Basic processing:
 ```bash
-process-teamxuk-radiosondes test_edt_output/ processed_data/
+process-teamxuk-radiosondes edt_files/ processed_data/
 ```
 
 With custom metadata:
 ```bash
-process-teamxuk-radiosondes test_edt_output/ processed_data/ my_metadata/
+process-teamxuk-radiosondes edt_files/ processed_data/ my_metadata/
 ```
 
 Process specific campaign data:
