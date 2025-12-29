@@ -41,7 +41,7 @@ process-teamxuk-radiosondes /data/teamxuk/raw/ /data/teamxuk/processed/
 
 The tool creates NetCDF files following the NCAS-AMOF naming convention:
 ```
-ncas-radiosonde-2_teamx-uk_sterzing_YYYYMMDD-HHMMSS_v1.0.nc
+ncas-radiosonde-2_sterzing_YYYYMMDD-HHMMSS_sonde_teamxuk_v1.0.nc
 ```
 
 Each file contains:
@@ -110,7 +110,7 @@ from radiosonde_teamxuk import process_radiosondes
 
 ```python
 process_radiosondes.process_file(
-    edt_file='test_edt_output/edt1sdata_20250224_1101.nc',
+    edt_file='edt_files/edt1sdataforv217_20250224_1101.txt',
     output_dir='processed_data/',
     metadata_dir=None  # Use default metadata
 )
@@ -121,7 +121,7 @@ process_radiosondes.process_file(
 ```python
 import glob
 
-edt_files = glob.glob('test_edt_output/*.nc')
+edt_files = glob.glob('edt_files/edt1sdata*.txt')
 for edt_file in edt_files:
     process_radiosondes.process_file(
         edt_file=edt_file,
@@ -140,7 +140,7 @@ from radiosonde_teamxuk import generate_quicklooks
 
 ```python
 generate_quicklooks.generate_quicklook(
-    netcdf_file='processed_data/ncas-radiosonde-2_teamx-uk_sterzing_20250224-110100_v1.0.nc',
+    netcdf_file='processed_data/ncas-radiosonde-2_sterzing_20250224-110100_sonde_teamxuk_v1.0.nc',
     stability=True
 )
 ```
@@ -250,7 +250,7 @@ output_dir = 'processed/'
 os.makedirs(output_dir, exist_ok=True)
 
 # Process all files
-edt_files = glob.glob(f'{input_dir}/*.nc')
+edt_files = glob.glob(f'{input_dir}/edt*.txt')
 for edt_file in edt_files:
     try:
         process_radiosondes.process_file(edt_file, output_dir)

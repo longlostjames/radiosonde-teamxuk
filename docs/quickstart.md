@@ -86,7 +86,7 @@ from radiosonde_teamxuk import process_radiosondes
 
 # Process a single file
 process_radiosondes.process_file(
-    'test_edt_output/edt1sdata_20250224_1101.nc',
+    'edt_files/edt1sdataforv217_20250224_1101.txt',
     'processed_data/',
     metadata_dir='metadata/'
 )
@@ -99,7 +99,7 @@ from radiosonde_teamxuk import generate_quicklooks
 
 # Generate quicklook for a NetCDF file
 generate_quicklooks.generate_quicklook(
-    'processed_data/ncas-radiosonde-2_teamx-uk_sterzing_20250224-110100_v1.0.nc',
+    'processed_data/ncas-radiosonde-2_sterzing_20250224-110100_sonde_teamxuk_v1.0.nc',
     stability=True
 )
 ```
@@ -110,7 +110,7 @@ Here's a complete workflow from raw data to visualizations:
 
 ```bash
 # 1. Process all EDT files
-process-teamxuk-radiosondes test_edt_output/ processed_data/
+process-teamxuk-radiosondes edt_files/ processed_data/
 
 # 2. Generate quicklook plots with stability analysis
 generate-teamxuk-quicklooks processed_data/ --stability
@@ -126,7 +126,7 @@ ls processed_data/quicklooks/
 
 Files follow the NCAS-AMOF naming convention:
 ```
-ncas-radiosonde-2_teamx-uk_sterzing_YYYYMMDD-HHMMSS_v1.0.nc
+ncas-radiosonde-2_sterzing_YYYYMMDD-HHMMSS_sonde_teamxuk_v1.0.nc
 ```
 
 ### Quicklook Plots
@@ -134,9 +134,9 @@ ncas-radiosonde-2_teamx-uk_sterzing_YYYYMMDD-HHMMSS_v1.0.nc
 Plots are saved in the `quicklooks/` subdirectory:
 ```
 processed_data/
-├── ncas-radiosonde-2_teamx-uk_sterzing_20250224-110100_v1.0.nc
+├── ncas-radiosonde-2_sterzing_20250224-110100_sonde_teamxuk_v1.0.nc
 └── quicklooks/
-    └── ncas-radiosonde-2_teamx-uk_sterzing_20250224-110100_v1.0_quicklook.png
+    └── ncas-radiosonde-2_sterzing_20250224-110100_sonde_teamxuk_v1.0.png
 ```
 
 ## Next Steps
