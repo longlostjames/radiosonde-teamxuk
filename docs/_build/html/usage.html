@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage Guide &mdash; radiosonde-teamxuk 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api.html" />
+    <link rel="prev" title="Quick Start Guide" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            radiosonde-teamxuk
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-tools">Command-Line Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#process-teamxuk-radiosondes">process-teamxuk-radiosondes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-teamxuk-quicklooks">generate-teamxuk-quicklooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#python-api">Python API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#processing-module">Processing Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#process-a-single-file">Process a Single File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#process-multiple-files">Process Multiple Files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quicklooks-module">Quicklooks Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#generate-single-quicklook">Generate Single Quicklook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-format">Data Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-edt-files">Input: EDT Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-ncas-amof-netcdf-files">Output: NCAS-AMOF NetCDF Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata-configuration">Metadata Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#default-metadata">Default Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-metadata">Custom Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata-fields">Metadata Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#file-organization">File Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Batch Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quality-control">Quality Control</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#missing-data">Missing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-generation-failures">Plot Generation Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-issues">Memory Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">radiosonde-teamxuk</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage-guide">
+<h1>Usage Guide<a class="headerlink" href="#usage-guide" title="Link to this heading"></a></h1>
+<p>Complete guide to using the radiosonde-teamxuk package.</p>
+<section id="command-line-tools">
+<h2>Command-Line Tools<a class="headerlink" href="#command-line-tools" title="Link to this heading"></a></h2>
+<section id="process-teamxuk-radiosondes">
+<h3>process-teamxuk-radiosondes<a class="headerlink" href="#process-teamxuk-radiosondes" title="Link to this heading"></a></h3>
+<p>Process EDT format radiosonde data files and convert them to NCAS-AMOF NetCDF format.</p>
+<section id="syntax">
+<h4>Syntax<a class="headerlink" href="#syntax" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>process-teamxuk-radiosondes<span class="w"> </span>&lt;input_directory&gt;<span class="w"> </span>&lt;output_directory&gt;<span class="w"> </span><span class="o">[</span>metadata_directory<span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="arguments">
+<h4>Arguments<a class="headerlink" href="#arguments" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input_directory</span></code> (required): Directory containing EDT format files (<code class="docutils literal notranslate"><span class="pre">.nc</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_directory</span></code> (required): Directory where NetCDF files will be saved</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">metadata_directory</span></code> (optional): Directory containing custom metadata JSON files</p></li>
+</ul>
+</section>
+<section id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h4>
+<p>Basic processing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>process-teamxuk-radiosondes<span class="w"> </span>test_edt_output/<span class="w"> </span>processed_data/
+</pre></div>
+</div>
+<p>With custom metadata:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>process-teamxuk-radiosondes<span class="w"> </span>test_edt_output/<span class="w"> </span>processed_data/<span class="w"> </span>my_metadata/
+</pre></div>
+</div>
+<p>Process specific campaign data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>process-teamxuk-radiosondes<span class="w"> </span>/data/teamxuk/raw/<span class="w"> </span>/data/teamxuk/processed/
+</pre></div>
+</div>
+</section>
+<section id="output">
+<h4>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h4>
+<p>The tool creates NetCDF files following the NCAS-AMOF naming convention:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ncas</span><span class="o">-</span><span class="n">radiosonde</span><span class="o">-</span><span class="mi">2</span><span class="n">_teamx</span><span class="o">-</span><span class="n">uk_sterzing_YYYYMMDD</span><span class="o">-</span><span class="n">HHMMSS_v1</span><span class="mf">.0</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+<p>Each file contains:</p>
+<ul class="simple">
+<li><p>Atmospheric profiles (pressure, temperature, humidity)</p></li>
+<li><p>Wind data (speed and direction)</p></li>
+<li><p>GPS position data</p></li>
+<li><p>Derived variables (potential temperature, equivalent potential temperature, mixing ratio)</p></li>
+<li><p>Comprehensive metadata</p></li>
+</ul>
+</section>
+</section>
+<section id="generate-teamxuk-quicklooks">
+<h3>generate-teamxuk-quicklooks<a class="headerlink" href="#generate-teamxuk-quicklooks" title="Link to this heading"></a></h3>
+<p>Generate quicklook visualization plots from processed NetCDF files.</p>
+<section id="id1">
+<h4>Syntax<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>generate-teamxuk-quicklooks<span class="w"> </span>&lt;netcdf_directory&gt;<span class="w"> </span><span class="o">[</span>--stability<span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h4>Arguments<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">netcdf_directory</span></code> (required): Directory containing NetCDF files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--stability</span></code> (optional): Include atmospheric stability analysis plots</p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>Examples<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<p>Basic quicklook generation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>generate-teamxuk-quicklooks<span class="w"> </span>processed_data/
+</pre></div>
+</div>
+<p>With stability analysis:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>generate-teamxuk-quicklooks<span class="w"> </span>processed_data/<span class="w"> </span>--stability
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h4>Output<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>Plots are saved in <code class="docutils literal notranslate"><span class="pre">&lt;netcdf_directory&gt;/quicklooks/</span></code> with naming:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">original_filename</span><span class="o">&gt;</span><span class="n">_quicklook</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<p><strong>Standard Quicklook</strong> includes:</p>
+<ul class="simple">
+<li><p>Temperature profile vs altitude</p></li>
+<li><p>Relative humidity profile</p></li>
+<li><p>Wind speed and direction</p></li>
+<li><p>Trajectory map with launch location</p></li>
+</ul>
+<p><strong>With –stability flag</strong> adds:</p>
+<ul class="simple">
+<li><p>Skew-T log-P diagram</p></li>
+<li><p>CAPE (Convective Available Potential Energy)</p></li>
+<li><p>CIN (Convective Inhibition)</p></li>
+<li><p>Lifted Index</p></li>
+<li><p>Other stability indices</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="python-api">
+<h2>Python API<a class="headerlink" href="#python-api" title="Link to this heading"></a></h2>
+<section id="processing-module">
+<h3>Processing Module<a class="headerlink" href="#processing-module" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">radiosonde_teamxuk</span><span class="w"> </span><span class="kn">import</span> <span class="n">process_radiosondes</span>
+</pre></div>
+</div>
+<section id="process-a-single-file">
+<h4>Process a Single File<a class="headerlink" href="#process-a-single-file" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">process_radiosondes</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span>
+    <span class="n">edt_file</span><span class="o">=</span><span class="s1">&#39;test_edt_output/edt1sdata_20250224_1101.nc&#39;</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;processed_data/&#39;</span><span class="p">,</span>
+    <span class="n">metadata_dir</span><span class="o">=</span><span class="kc">None</span>  <span class="c1"># Use default metadata</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="process-multiple-files">
+<h4>Process Multiple Files<a class="headerlink" href="#process-multiple-files" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+
+<span class="n">edt_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;test_edt_output/*.nc&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">edt_file</span> <span class="ow">in</span> <span class="n">edt_files</span><span class="p">:</span>
+    <span class="n">process_radiosondes</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span>
+        <span class="n">edt_file</span><span class="o">=</span><span class="n">edt_file</span><span class="p">,</span>
+        <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;processed_data/&#39;</span><span class="p">,</span>
+        <span class="n">metadata_dir</span><span class="o">=</span><span class="s1">&#39;metadata/&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="quicklooks-module">
+<h3>Quicklooks Module<a class="headerlink" href="#quicklooks-module" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">radiosonde_teamxuk</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_quicklooks</span>
+</pre></div>
+</div>
+<section id="generate-single-quicklook">
+<h4>Generate Single Quicklook<a class="headerlink" href="#generate-single-quicklook" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">generate_quicklooks</span><span class="o">.</span><span class="n">generate_quicklook</span><span class="p">(</span>
+    <span class="n">netcdf_file</span><span class="o">=</span><span class="s1">&#39;processed_data/ncas-radiosonde-2_teamx-uk_sterzing_20250224-110100_v1.0.nc&#39;</span><span class="p">,</span>
+    <span class="n">stability</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="batch-processing">
+<h4>Batch Processing<a class="headerlink" href="#batch-processing" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+
+<span class="n">nc_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;processed_data/*.nc&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">nc_file</span> <span class="ow">in</span> <span class="n">nc_files</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">generate_quicklooks</span><span class="o">.</span><span class="n">generate_quicklook</span><span class="p">(</span><span class="n">nc_file</span><span class="p">,</span> <span class="n">stability</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generated quicklook for </span><span class="si">{</span><span class="n">nc_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error processing </span><span class="si">{</span><span class="n">nc_file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="data-format">
+<h2>Data Format<a class="headerlink" href="#data-format" title="Link to this heading"></a></h2>
+<section id="input-edt-files">
+<h3>Input: EDT Files<a class="headerlink" href="#input-edt-files" title="Link to this heading"></a></h3>
+<p>EDT (Enhanced Data Transfer) files are NetCDF format files produced by Vaisala ground stations. They contain:</p>
+<ul class="simple">
+<li><p>Raw radiosonde measurements</p></li>
+<li><p>GPS data</p></li>
+<li><p>Telemetry information</p></li>
+</ul>
+</section>
+<section id="output-ncas-amof-netcdf-files">
+<h3>Output: NCAS-AMOF NetCDF Files<a class="headerlink" href="#output-ncas-amof-netcdf-files" title="Link to this heading"></a></h3>
+<p>The processed files follow the NCAS-AMOF standard and include:</p>
+<p><strong>Coordinates:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">altitude</span></code> - Height above mean sea level (m)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> - Time since launch (seconds)</p></li>
+</ul>
+<p><strong>Variables:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">air_pressure</span></code> - Atmospheric pressure (Pa)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">air_temperature</span></code> - Temperature (K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">relative_humidity</span></code> - Relative humidity (%)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_speed</span></code> - Wind speed (m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wind_from_direction</span></code> - Wind direction (degrees)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eastward_wind</span></code> - U component (m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">northward_wind</span></code> - V component (m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code> - GPS latitude (degrees)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code> - GPS longitude (degrees)</p></li>
+</ul>
+<p><strong>Derived Variables:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">air_potential_temperature</span></code> - Potential temperature (K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">equivalent_potential_temperature</span></code> - Equivalent potential temperature (K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">humidity_mixing_ratio</span></code> - Water vapor mixing ratio (kg/kg)</p></li>
+</ul>
+</section>
+</section>
+<section id="metadata-configuration">
+<h2>Metadata Configuration<a class="headerlink" href="#metadata-configuration" title="Link to this heading"></a></h2>
+<section id="default-metadata">
+<h3>Default Metadata<a class="headerlink" href="#default-metadata" title="Link to this heading"></a></h3>
+<p>The package includes default metadata files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">metadata_ncas-radiosonde-1.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">metadata_ncas-radiosonde-2.json</span></code></p></li>
+</ul>
+</section>
+<section id="custom-metadata">
+<h3>Custom Metadata<a class="headerlink" href="#custom-metadata" title="Link to this heading"></a></h3>
+<p>To use custom metadata:</p>
+<ol class="arabic simple">
+<li><p>Create a directory (e.g., <code class="docutils literal notranslate"><span class="pre">my_metadata/</span></code>)</p></li>
+<li><p>Copy and modify the default JSON files</p></li>
+<li><p>Specify the directory when processing:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>process-teamxuk-radiosondes<span class="w"> </span>input/<span class="w"> </span>output/<span class="w"> </span>my_metadata/
+</pre></div>
+</div>
+</section>
+<section id="metadata-fields">
+<h3>Metadata Fields<a class="headerlink" href="#metadata-fields" title="Link to this heading"></a></h3>
+<p>Key metadata fields include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">platform</span></code> - Launch site information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">instrument</span></code> - Radiosonde model and serial number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">campaign</span></code> - Campaign name and description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contacts</span></code> - Principal investigators and data managers</p></li>
+</ul>
+</section>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h2>
+<section id="file-organization">
+<h3>File Organization<a class="headerlink" href="#file-organization" title="Link to this heading"></a></h3>
+<p>Organize your data with a clear directory structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>project/
+├── raw_edt/          # Original EDT files
+├── processed/        # Converted NetCDF files
+│   └── quicklooks/   # Generated plots
+└── metadata/         # Custom metadata (if needed)
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>Batch Processing<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>For large datasets, process in batches and handle errors:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">radiosonde_teamxuk</span><span class="w"> </span><span class="kn">import</span> <span class="n">process_radiosondes</span>
+
+<span class="n">input_dir</span> <span class="o">=</span> <span class="s1">&#39;raw_edt/&#39;</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;processed/&#39;</span>
+
+<span class="c1"># Ensure output directory exists</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Process all files</span>
+<span class="n">edt_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">input_dir</span><span class="si">}</span><span class="s1">/*.nc&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">edt_file</span> <span class="ow">in</span> <span class="n">edt_files</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">process_radiosondes</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span><span class="n">edt_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✓ Processed </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">edt_file</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✗ Error processing </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">edt_file</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="quality-control">
+<h3>Quality Control<a class="headerlink" href="#quality-control" title="Link to this heading"></a></h3>
+<p>Always review quicklook plots for data quality:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Process data</span>
+process-teamxuk-radiosondes<span class="w"> </span>raw_edt/<span class="w"> </span>processed/
+
+<span class="c1"># Generate quicklooks with stability analysis</span>
+generate-teamxuk-quicklooks<span class="w"> </span>processed/<span class="w"> </span>--stability
+
+<span class="c1"># Review plots</span>
+ls<span class="w"> </span>processed/quicklooks/
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="missing-data">
+<h3>Missing Data<a class="headerlink" href="#missing-data" title="Link to this heading"></a></h3>
+<p>If processed files have missing data:</p>
+<ul class="simple">
+<li><p>Check that EDT files are valid</p></li>
+<li><p>Verify radiosonde successfully completed its ascent</p></li>
+<li><p>Review raw EDT file for data gaps</p></li>
+</ul>
+</section>
+<section id="plot-generation-failures">
+<h3>Plot Generation Failures<a class="headerlink" href="#plot-generation-failures" title="Link to this heading"></a></h3>
+<p>If quicklook generation fails:</p>
+<ul class="simple">
+<li><p>Ensure NetCDF file contains required variables</p></li>
+<li><p>Check that coordinate dimensions are valid</p></li>
+<li><p>Verify matplotlib backend is properly configured</p></li>
+</ul>
+</section>
+<section id="memory-issues">
+<h3>Memory Issues<a class="headerlink" href="#memory-issues" title="Link to this heading"></a></h3>
+<p>For large batches:</p>
+<ul class="simple">
+<li><p>Process files individually rather than all at once</p></li>
+<li><p>Close NetCDF datasets explicitly after reading</p></li>
+<li><p>Use batch processing scripts with error handling</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, TeamXUK.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('..'))
 project = 'radiosonde-teamxuk'
 copyright = '2025, TeamXUK'
 author = 'TeamXUK'
-release = '0.1.0'
+release = '0.2.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

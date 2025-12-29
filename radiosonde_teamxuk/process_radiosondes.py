@@ -1219,15 +1219,22 @@ def process_edt_files(input_dir, output_dir, metadata_dir=None):
 
 def main():
     """Main entry point for script"""
+    # Check for --version flag
+    if len(sys.argv) == 2 and sys.argv[1] in ['--version', '-v']:
+        print(f"radiosonde-teamxuk version {PACKAGE_VERSION}")
+        sys.exit(0)
+    
     if len(sys.argv) < 3 or len(sys.argv) > 4:
-        print("Usage: python process_radiosondes.py <input_directory> <output_directory> [metadata_directory]")
+        print("Usage: process-teamxuk-radiosondes <input_directory> <output_directory> [metadata_directory]")
         print("\nExample:")
-        print("  python process_radiosondes.py ./edt_files ./")
+        print("  process-teamxuk-radiosondes ./edt_files ./")
         print("\nThe script will automatically select metadata files based on instrument:")
         print("  - metadata_ncas-radiosonde-1.json for ncas-radiosonde-1")
         print("  - metadata_ncas-radiosonde-2.json for ncas-radiosonde-2")
         print("\nIf metadata_directory is not provided, the script will search in")
         print("the current directory and input directory.")
+        print("\nOptions:")
+        print("  --version, -v  Show version number")
         sys.exit(1)
     
     input_dir = sys.argv[1]

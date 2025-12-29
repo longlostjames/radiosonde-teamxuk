@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; radiosonde-teamxuk 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start Guide" href="quickstart.html" />
+    <link rel="prev" title="Welcome to radiosonde-teamxuk’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            radiosonde-teamxuk
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#from-github-recommended-for-users">From GitHub (Recommended for Users)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-source-for-development">From Source (For Development)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-local-directory">From Local Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-installation">Verifying Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-not-found">Command Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-eccodes">Missing ECCODES</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">radiosonde-teamxuk</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Python 3.9 or higher</p></li>
+<li><p>pip (Python package installer)</p></li>
+</ul>
+</section>
+<section id="installation-methods">
+<h2>Installation Methods<a class="headerlink" href="#installation-methods" title="Link to this heading"></a></h2>
+<section id="from-github-recommended-for-users">
+<h3>From GitHub (Recommended for Users)<a class="headerlink" href="#from-github-recommended-for-users" title="Link to this heading"></a></h3>
+<p>Install the latest version directly from GitHub:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/longlostjames/radiosonde-teamxuk.git
+</pre></div>
+</div>
+</section>
+<section id="from-source-for-development">
+<h3>From Source (For Development)<a class="headerlink" href="#from-source-for-development" title="Link to this heading"></a></h3>
+<p>Clone the repository and install in editable mode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/longlostjames/radiosonde-teamxuk.git
+<span class="nb">cd</span><span class="w"> </span>radiosonde-teamxuk
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-e</span></code> flag installs the package in “editable” mode, allowing you to modify the code and see changes immediately without reinstalling.</p>
+</section>
+<section id="from-local-directory">
+<h3>From Local Directory<a class="headerlink" href="#from-local-directory" title="Link to this heading"></a></h3>
+<p>If you have downloaded the source code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>radiosonde-teamxuk
+pip<span class="w"> </span>install<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h2>
+<p>The package will automatically install the following dependencies:</p>
+<ul class="simple">
+<li><p>numpy</p></li>
+<li><p>matplotlib</p></li>
+<li><p>metpy</p></li>
+<li><p>cartopy</p></li>
+<li><p>netCDF4</p></li>
+<li><p>ncas-amof-netcdf-template</p></li>
+<li><p>python-eccodes</p></li>
+</ul>
+</section>
+<section id="verifying-installation">
+<h2>Verifying Installation<a class="headerlink" href="#verifying-installation" title="Link to this heading"></a></h2>
+<p>After installation, verify that the command-line tools are available:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>process-teamxuk-radiosondes<span class="w"> </span>--version
+generate-teamxuk-quicklooks<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>You should see version <code class="docutils literal notranslate"><span class="pre">0.1.0</span></code> displayed.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="command-not-found">
+<h3>Command Not Found<a class="headerlink" href="#command-not-found" title="Link to this heading"></a></h3>
+<p>If you get a “command not found” error, the scripts may not be in your PATH. You can:</p>
+<ol class="arabic">
+<li><p><strong>Add to PATH</strong>: Add <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code> to your PATH:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Use Python module</strong>: Run the scripts as Python modules:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>radiosonde_teamxuk.process_radiosondes
+python<span class="w"> </span>-m<span class="w"> </span>radiosonde_teamxuk.generate_quicklooks
+</pre></div>
+</div>
+</li>
+<li><p><strong>Reinstall</strong>: Try reinstalling with <code class="docutils literal notranslate"><span class="pre">--force-reinstall</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--force-reinstall<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="missing-eccodes">
+<h3>Missing ECCODES<a class="headerlink" href="#missing-eccodes" title="Link to this heading"></a></h3>
+<p>If you encounter issues with ECCODES, you may need to install it separately:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># On Ubuntu/Debian</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libeccodes-dev
+
+<span class="c1"># On macOS with Homebrew</span>
+brew<span class="w"> </span>install<span class="w"> </span>eccodes
+</pre></div>
+</div>
+<p>Then install the Python bindings:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>python-eccodes
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to radiosonde-teamxuk’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, TeamXUK.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -17,6 +17,16 @@ import cartopy.feature as cfeature
 import cartopy.io.img_tiles as cimgt
 from netCDF4 import Dataset
 
+# Import package version
+try:
+    from importlib.metadata import version
+    PACKAGE_VERSION = version("radiosonde-teamxuk")
+except Exception:
+    try:
+        from radiosonde_teamxuk import __version__ as PACKAGE_VERSION
+    except ImportError:
+        PACKAGE_VERSION = "0.2.0"  # Fallback to hardcoded version
+
 
 def wind_components(speed, direction):
     """
@@ -580,12 +590,18 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Generate quicklook plots from radiosonde NetCDF files')
-    parser.add_argument('input_dir', help='Directory containing NetCDF files')
+    parser.add_argument('input_dir', nargs='?', help='Directory containing NetCDF files')
     parser.add_argument('output_dir', nargs='?', default=None, help='(Not used - quicklooks are created alongside NetCDF files)')
     parser.add_argument('--stability', action='store_true', 
                        help='Show CAPE/CIN shading and LCL/LFC markers')
+    parser.add_argument('--version', '-v', action='version',
+                       version=f'radiosonde-teamxuk version {PACKAGE_VERSION}')
     
     args = parser.parse_args()
+    
+    if not args.input_dir:
+        parser.print_help()
+        sys.exit(1)
     
     if not os.path.isdir(args.input_dir):
         print(f"Error: Input directory '{args.input_dir}' does not exist")
