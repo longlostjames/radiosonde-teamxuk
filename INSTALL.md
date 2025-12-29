@@ -34,10 +34,10 @@ Once installed, you can use the command-line tools:
 
 ```bash
 # Process EDT files to NetCDF
-process-radiosondes <input_directory> <output_directory> [metadata_directory]
+process-teamxuk-radiosondes <input_directory> <output_directory> [metadata_directory]
 
 # Generate quicklook plots
-generate-quicklooks <input_directory> <output_directory>
+generate-teamxuk-quicklooks <input_directory> <output_directory>
 ```
 
 Or import the package in Python:

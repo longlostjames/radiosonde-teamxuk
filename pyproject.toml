@@ -41,6 +41,15 @@ generate-teamxuk-quicklooks = "radiosonde_teamxuk.generate_quicklooks:main"
 [project.urls]
 Homepage = "https://github.com/longlostjames/radiosonde-teamxuk"
 Repository = "https://github.com/longlostjames/radiosonde-teamxuk"
+Documentation = "https://radiosonde-teamxuk.readthedocs.io"
+
+[project.optional-dependencies]
+docs = [
+    "sphinx>=7.0.0",
+    "sphinx-rtd-theme>=2.0.0",
+    "sphinx-autodoc-typehints>=2.0.0",
+    "myst-parser>=3.0.0",
+]
 
 [tool.setuptools.packages.find]
 where = ["."]

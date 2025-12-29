@@ -34,8 +34,8 @@ All required dependencies will be automatically installed.
 ## Overview
 
 This package provides two main command-line tools:
-- **`process-radiosondes`**: Converts EDT files to NCAS-AMOF NetCDF format
-- **`generate-quicklooks`**: Creates quicklook plots from NetCDF files
+- **`process-teamxuk-radiosondes`**: Converts EDT files to NCAS-AMOF NetCDF format
+- **`generate-teamxuk-quicklooks`**: Creates quicklook plots from NetCDF files
 
 ## Requirements
 
@@ -56,12 +56,12 @@ This package provides two main command-line tools:
 Convert Vaisala EDT (Extended Data) files to NCAS-AMOF compliant NetCDF format:
 
 ```bash
-process-radiosondes <input_directory> <output_directory> [metadata_directory]
+process-teamxuk-radiosondes <input_directory> <output_directory> [metadata_directory]
 ```
 
 **Example:**
 ```bash
-process-radiosondes ./edt_files ./output
+process-teamxuk-radiosondes ./edt_files ./output
 ```
 
 **Features:**
@@ -93,13 +93,13 @@ Only processes EDT files starting with `edt1sdataforv217*`. The script reads:
 Create quicklook plots from NetCDF files:
 
 ```bash
-generate-quicklooks <input_directory> [--stability]
+generate-teamxuk-quicklooks <input_directory> [--stability]
 ```
 
 **Example:**
 ```bash
-generate-quicklooks /path/to/netcdf/files
-generate-quicklooks /path/to/netcdf/files --stability
+generate-teamxuk-quicklooks /path/to/netcdf/files
+generate-teamxuk-quicklooks /path/to/netcdf/files --stability
 ```
 
 **Features:**

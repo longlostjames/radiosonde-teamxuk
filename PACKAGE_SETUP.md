@@ -15,8 +15,8 @@ Your radiosonde-teamxuk project is now pip installable! 🎉
 - Package metadata (name, version, description, authors)
 - Dependencies automatically installed
 - Command-line entry points:
-  - `process-radiosondes` → runs process_radiosondes.py
-  - `generate-quicklooks` → runs generate_quicklooks.py
+  - `process-teamxuk-radiosondes` → runs process_radiosondes.py
+  - `generate-teamxuk-quicklooks` → runs generate_quicklooks.py
 
 #### `requirements.txt`
 - Lists all dependencies with version constraints
@@ -66,10 +66,10 @@ After installation, you can run:
 
 ```bash
 # Process EDT files to NetCDF
-process-radiosondes <input_directory> <output_directory> [metadata_directory]
+process-teamxuk-radiosondes <input_directory> <output_directory> [metadata_directory]
 
 # Generate quicklook plots
-generate-quicklooks <input_directory> [--stability]
+generate-teamxuk-quicklooks <input_directory> [--stability]
 ```
 
 **Note:** If you see warnings about commands not being on PATH, add `~/.local/bin` to your PATH:
