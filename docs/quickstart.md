@@ -33,7 +33,7 @@ process-teamxuk-radiosondes input_dir/ output_dir/ metadata_dir/
 
 **Example:**
 ```bash
-process-teamxuk-radiosondes test_edt_output/ processed_data/ my_metadata/
+process-teamxuk-radiosondes edt_files/ processed_data/ my_metadata/
 ```
 
 The metadata directory should contain:
