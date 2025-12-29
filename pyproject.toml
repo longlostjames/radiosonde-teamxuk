@@ -35,8 +35,8 @@ classifiers = [
 ]
 
 [project.scripts]
-process-radiosondes = "radiosonde_teamxuk.process_radiosondes:main"
-generate-quicklooks = "radiosonde_teamxuk.generate_quicklooks:main"
+process-teamxuk-radiosondes = "radiosonde_teamxuk.process_radiosondes:main"
+generate-teamxuk-quicklooks = "radiosonde_teamxuk.generate_quicklooks:main"
 
 [project.urls]
 Homepage = "https://github.com/longlostjames/radiosonde-teamxuk"
