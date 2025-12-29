@@ -14,11 +14,11 @@ process-teamxuk-radiosondes input_directory/ output_directory/
 
 **Example:**
 ```bash
-process-teamxuk-radiosondes test_edt_output/ processed_data/
+process-teamxuk-radiosondes edt_files/ processed_data/
 ```
 
 This will:
-- Read all EDT files from `test_edt_output/`
+- Read all EDT files from `edt_files/`
 - Convert them to NetCDF format
 - Save the output files in `processed_data/`
 - Use default metadata from the package
