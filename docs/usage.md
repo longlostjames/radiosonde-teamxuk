@@ -16,7 +16,7 @@ process-teamxuk-radiosondes <input_directory> <output_directory> [metadata_direc
 
 #### Arguments
 
-- `input_directory` (required): Directory containing EDT format files (`.nc`)
+- `input_directory` (required): Directory containing EDT format files (`edt*.txt`)
 - `output_directory` (required): Directory where NetCDF files will be saved
 - `metadata_directory` (optional): Directory containing custom metadata JSON files
 
