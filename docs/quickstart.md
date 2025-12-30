@@ -44,12 +44,12 @@ The metadata directory should contain:
 Create visualization plots from NetCDF files:
 
 ```bash
-generate-teamxuk-quicklooks netcdf_directory/
+generate-teamxuk-radiosonde-quicklooks netcdf_directory/
 ```
 
 **Example:**
 ```bash
-generate-teamxuk-quicklooks processed_data/
+generate-teamxuk-radiosonde-quicklooks processed_data/
 ```
 
 This generates plots showing:
@@ -63,12 +63,12 @@ This generates plots showing:
 Include atmospheric stability plots:
 
 ```bash
-generate-teamxuk-quicklooks netcdf_directory/ --stability
+generate-teamxuk-radiosonde-quicklooks netcdf_directory/ --stability
 ```
 
 **Example:**
 ```bash
-generate-teamxuk-quicklooks processed_data/ --stability
+generate-teamxuk-radiosonde-quicklooks processed_data/ --stability
 ```
 
 This adds additional plots for:
@@ -113,7 +113,7 @@ Here's a complete workflow from raw data to visualizations:
 process-teamxuk-radiosondes edt_files/ processed_data/
 
 # 2. Generate quicklook plots with stability analysis
-generate-teamxuk-quicklooks processed_data/ --stability
+generate-teamxuk-radiosonde-quicklooks processed_data/ --stability
 
 # 3. Review the output
 ls processed_data/

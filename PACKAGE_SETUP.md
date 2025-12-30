@@ -16,7 +16,7 @@ Your radiosonde-teamxuk project is now pip installable! 🎉
 - Dependencies automatically installed
 - Command-line entry points:
   - `process-teamxuk-radiosondes` → runs process_radiosondes.py
-  - `generate-teamxuk-quicklooks` → runs generate_quicklooks.py
+  - `generate-teamxuk-radiosonde-quicklooks` → runs generate_quicklooks.py
 
 #### `requirements.txt`
 - Lists all dependencies with version constraints
@@ -69,7 +69,7 @@ After installation, you can run:
 process-teamxuk-radiosondes <input_directory> <output_directory> [metadata_directory]
 
 # Generate quicklook plots
-generate-teamxuk-quicklooks <input_directory> [--stability]
+generate-teamxuk-radiosonde-quicklooks <input_directory> [--stability]
 ```
 
 **Note:** If you see warnings about commands not being on PATH, add `~/.local/bin` to your PATH:

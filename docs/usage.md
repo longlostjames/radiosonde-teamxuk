@@ -51,14 +51,14 @@ Each file contains:
 - Derived variables (potential temperature, equivalent potential temperature, mixing ratio)
 - Comprehensive metadata
 
-### generate-teamxuk-quicklooks
+### generate-teamxuk-radiosonde-quicklooks
 
 Generate quicklook visualization plots from processed NetCDF files.
 
 #### Syntax
 
 ```bash
-generate-teamxuk-quicklooks <netcdf_directory> [--stability]
+generate-teamxuk-radiosonde-quicklooks <netcdf_directory> [--stability]
 ```
 
 #### Arguments
@@ -70,12 +70,12 @@ generate-teamxuk-quicklooks <netcdf_directory> [--stability]
 
 Basic quicklook generation:
 ```bash
-generate-teamxuk-quicklooks processed_data/
+generate-teamxuk-radiosonde-quicklooks processed_data/
 ```
 
 With stability analysis:
 ```bash
-generate-teamxuk-quicklooks processed_data/ --stability
+generate-teamxuk-radiosonde-quicklooks processed_data/ --stability
 ```
 
 #### Output
@@ -268,7 +268,7 @@ Always review quicklook plots for data quality:
 process-teamxuk-radiosondes raw_edt/ processed/
 
 # Generate quicklooks with stability analysis
-generate-teamxuk-quicklooks processed/ --stability
+generate-teamxuk-radiosonde-quicklooks processed/ --stability
 
 # Review plots
 ls processed/quicklooks/

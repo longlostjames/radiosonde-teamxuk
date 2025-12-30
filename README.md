@@ -35,7 +35,7 @@ All required dependencies will be automatically installed.
 
 This package provides two main command-line tools:
 - **`process-teamxuk-radiosondes`**: Converts EDT files to NCAS-AMOF NetCDF format
-- **`generate-teamxuk-quicklooks`**: Creates quicklook plots from NetCDF files
+- **`generate-teamxuk-radiosonde-quicklooks`**: Creates quicklook plots from NetCDF files
 
 ## Requirements
 
@@ -93,13 +93,13 @@ Only processes EDT files starting with `edt1sdataforv217*`. The script reads:
 Create quicklook plots from NetCDF files:
 
 ```bash
-generate-teamxuk-quicklooks <input_directory> [--stability]
+generate-teamxuk-radiosonde-quicklooks <input_directory> [--stability]
 ```
 
 **Example:**
 ```bash
-generate-teamxuk-quicklooks /path/to/netcdf/files
-generate-teamxuk-quicklooks /path/to/netcdf/files --stability
+generate-teamxuk-radiosonde-quicklooks /path/to/netcdf/files
+generate-teamxuk-radiosonde-quicklooks /path/to/netcdf/files --stability
 ```
 
 **Features:**

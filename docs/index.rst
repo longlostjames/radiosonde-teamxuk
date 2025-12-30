@@ -46,7 +46,7 @@ Process radiosonde data::
 
 Generate quicklook plots::
 
-   generate-teamxuk-quicklooks netcdf_dir/ --stability
+   generate-teamxuk-radiosonde-quicklooks netcdf_dir/ --stability
 
 See :doc:`quickstart` for more examples.
 

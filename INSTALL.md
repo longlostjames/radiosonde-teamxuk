@@ -37,7 +37,7 @@ Once installed, you can use the command-line tools:
 process-teamxuk-radiosondes <input_directory> <output_directory> [metadata_directory]
 
 # Generate quicklook plots
-generate-teamxuk-quicklooks <input_directory> <output_directory>
+generate-teamxuk-radiosonde-quicklooks <input_directory> <output_directory>
 ```
 
 Or import the package in Python:

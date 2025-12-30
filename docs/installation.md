@@ -54,7 +54,7 @@ After installation, verify that the command-line tools are available:
 
 ```bash
 process-teamxuk-radiosondes --version
-generate-teamxuk-quicklooks --version
+generate-teamxuk-radiosonde-quicklooks --version
 ```
 
 You should see version `0.1.0` displayed.
